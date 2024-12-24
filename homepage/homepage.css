@@ -1,0 +1,389 @@
+/* General Styles */
+/* Resetting margin and padding for a clean layout */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Styles for the header */
+/* Defining the layout and height for the header section */
+header {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Styles for the .header-container */
+/* Adjusting height and margin for the header container */
+.header-container {
+    height: 150px;
+    margin: 0;
+    padding: 0;
+}
+
+/* Styles for the info bar */
+/* Layout and appearance for the top info bar */
+.info-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f1f1f1;
+    height: 30px;
+    padding: 0 20px;
+}
+
+/* Styles for the left section of the info bar */
+/* Styling for the left-aligned section in the info bar */
+.left-section {
+    flex: 0 0 85%;
+}
+
+/* Styles for the link in the left section */
+/* Formatting links within the left section */
+.left-section a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+/* Styles for the right section of the info bar */
+/* Styling for the right-aligned section in the info bar */
+.right-section {
+    flex: 0 0 15%;
+    text-align: right;
+}
+
+/* Styles for the time and date in the right section */
+/* Customizing time and date display in the info bar */
+.time {
+    font-size: 13px;
+}
+
+.date {
+    font-size: 15px;
+}
+
+/* Styles for the header content */
+/* Appearance and layout for the header content area */
+.header-content {
+    background-color: #380346;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    flex-grow: 1;
+}
+
+/* Styles for the main content area */
+/* Layout and height adjustments for the main content section */
+.main-content {
+    display: flex;
+    height: calc(100vh - 150px);
+}
+
+/* Styles for the navigation bar */
+/* Styling for the navigation panel */
+.navigation {
+    flex: 0 0 5%;
+    background-color: #f1f1f1;
+    padding: 20px;
+}
+
+/* Styles for the navigation list */
+/* Removing default list styling for navigation items */
+.navigation ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Styles for the navigation list items */
+/* Adding spacing between navigation items */
+.navigation li {
+    margin-bottom: 10px;
+}
+
+/* Styles for the navigation links */
+/* Formatting links in the navigation section */
+.navigation a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+/* Styles for the display section */
+/* Main content display adjustments */
+.display-section {
+    flex: 1;
+    background-color: #f1f1f1;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Hide all content containers by default */
+/* Ensuring content containers are hidden until activated */
+.display-section .content-container {
+    display: none;
+    height: 100%;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: auto; /* Enable horizontal scrolling within the container */
+}
+
+/* Show the dashboard container by default */
+/* Default visibility for the dashboard container */
+#dashboard-container {
+    display: block;
+    background-color: #f1f1f1;
+    height: 100%;
+    padding: 0;
+}
+
+/* Main content styles */
+/* Styling for the primary content section */
+#main-content {
+    padding: 20px;
+    background-color: #f7faf6;
+    border-radius: 8px;
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0.1);
+    height: 100%;
+}
+
+/* Add row form styles */
+/* Layout and styling for the form to add rows */
+.add-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.add-row input, .add-row select, .add-row button {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.add-row button {
+    background-color: #380346;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.add-row button:hover {
+    background-color: #29976b;
+}
+
+/* Maintenance table styles */
+/* Formatting the maintenance table */
+#maintenance-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#maintenance-table th, #maintenance-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+#maintenance-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+#maintenance-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Prevent text wrapping and set column width based on titles */
+table {
+    table-layout: auto;
+    width: 100%;
+}
+
+th, td {
+    white-space: nowrap;
+}
+
+/* Placeholder row styling */
+/* Styling for rows with placeholder content */
+.placeholder-row td {
+    text-align: center;
+    color: #999;
+}
+
+/* Input and select styles within the table */
+/* Adjustments for inputs and selects inside the table */
+.table-input, .table-select {
+    width: calc(100% - 0px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 12px;
+    box-sizing: border-box;
+}
+
+/* Knowledge container styles */
+/* Styling the knowledge section container */
+#knowledge-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.102);
+    overflow-x: auto; /* Enable horizontal scrolling within the container */
+}
+
+#knowledge-content {
+    display: block; /* Ensure content wrapper is visible */
+    width: 100%;
+}
+
+/* Knowledge table styles */
+/* Basic styling for knowledge tables */
+.knowledge-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    display: none; /* Hidden by default */
+}
+
+/* When a table is active */
+/* Styling for active knowledge tables */
+.knowledge-table.active {
+    display: table !important; /* Force display when active */
+}
+
+/* Basic table styling */
+.knowledge-table th,
+.knowledge-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.knowledge-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+/* Tab styling */
+/* Layout and appearance of tab navigation */
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    align-items: center; /* Align items vertically */
+}
+
+.tabs select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+/* Tab button styling */
+/* Default appearance for tab buttons */
+.tab-button {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px 4px 0 0;
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+.tab-button:hover {
+    background-color: #ddd;
+}
+
+/* Active tab button styling */
+/* Appearance for the active tab button */
+.tab-button.active {
+    background-color: #ccc;
+    font-weight: bold;
+}
+
+/* Form styling */
+/* Styling for forms in the knowledge section */
+#knowledge-form {
+    display: grid;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#knowledge-form select,
+#knowledge-form input,
+#knowledge-form button {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+#knowledge-form button {
+    background-color: #380346;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#knowledge-form button:hover {
+    background-color: #29976b;
+}
+
+
+/* Remove debug outline */
+/* Ensuring the knowledge table has minimum height */
+.knowledge-table {
+    min-height: 50px;
+}
+
+/* Dashboard styles */
+/* Styling for cards on the dashboard */
+.dashboard-card {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.dashboard-card h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+/* Content layout within dashboard cards */
+.card-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-item {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.card-item:last-child {
+    margin-right: 0;
+}
+
+.card-item h3 {
+    margin-top: 0;
+    color: #555;
+}
+
+.card-item p {
+    margin: 5px 0;
+    color: #777;
+}

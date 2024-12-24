@@ -1,0 +1,10 @@
+{
+    "priority": [
+        "Select priority:",
+        "Critical",
+        "Emergency",
+        "High",
+        "Low",
+        "Medium"
+    ]
+}
