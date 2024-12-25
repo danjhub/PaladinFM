@@ -1,0 +1,27 @@
+[
+    
+    {
+      "name": "American Grease Stick GD-8 8oz Garage Door Grease",
+      "image": "amazonlistsjson/amazonproductimages/image16.jpg",
+      "price": "$7.99",
+      "link": "https://amzn.to/4071ZrD"
+    },
+    {
+      "name": "CRAFTSMAN 20V MAX Cordless Leaf Blower Kit with Battery & Charger Included (CMCBL710D1) Red",
+      "image": "amazonlistsjson/amazonproductimages/image17.jpg",
+      "price": "$89.98",
+      "link": "https://amzn.to/41RkS30"
+    },
+    {
+        "name": "Commercial Mop Bucket with Side Press Wringer on Wheels, Including One Commercial Mop, 35 Quart, Yellow",
+        "image": "amazonlistsjson/amazonproductimages/image18.jpg",
+        "price": "$86.99",
+        "link": "https://amzn.to/4gsjDvO"
+    },
+    {
+        "name": "O-Cedar One Sweep Broom with Step-On Dustpan",
+        "image": "amazonlistsjson/amazonproductimages/image19.jpg",
+        "price": "$12.98",
+        "link": "https://amzn.to/40a1NrM"
+    }
+]

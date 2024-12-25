@@ -175,7 +175,7 @@ header {
 }
 
 .add-row button:hover {
-    background-color: #29976b;
+    background-color: #380346d8;
 }
 
 /* Maintenance table styles */
@@ -301,14 +301,16 @@ th, td {
 }
 
 .tab-button:hover {
-    background-color: #ddd;
+    background-color: #380346;
+    color: white;
 }
 
 /* Active tab button styling */
 /* Appearance for the active tab button */
 .tab-button.active {
-    background-color: #ccc;
+    background-color: #380346;
     font-weight: bold;
+    color: white;
 }
 
 /* Form styling */
@@ -331,14 +333,14 @@ th, td {
 }
 
 #knowledge-form button {
-    background-color: #380346;
+    background-color: #380346d8;
     color: white;
     border: none;
     cursor: pointer;
 }
 
 #knowledge-form button:hover {
-    background-color: #29976b;
+    background-color: #380346;
 }
 
 
@@ -386,4 +388,204 @@ th, td {
 .card-item p {
     margin: 5px 0;
     color: #777;
+}
+
+/* shop container styles */
+/* shop container styles */
+.shop-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.shop-bar {
+    display: flex;
+    width: 100%;
+    padding: 10px 0px 0px 0px;
+    background-color: #f7faf6; /* Updated background color */
+}
+
+.shop-tabs {
+    display: flex;
+    justify-content: flex-start; /* Align tabs to the left */
+    background-color: #f7faf6;
+    border-color: #ccc;
+    padding: 10px 5px 10px 20px;
+    gap: 10px; /* Add 10px padding between tabs */
+}
+
+.shop-tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #f1f1f1; /* Updated background color f7faf6*/
+    color: black;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.shop-tab:hover {
+    background-color: #380346;
+    color: white;
+}
+
+.shop-tab.active {
+    background-color: #380346;
+    color: white;
+}
+
+.shop-tab.hidden {
+    display: none;
+}
+
+.shopcart-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align the button to the left */
+    padding: 10px 5px 10px 5px;
+    background-color: f7faf6;
+}
+
+.shop-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 10px;
+    padding: 20px;
+    background-color: #f7faf6;
+}
+
+.shop-card {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.item-display {
+    padding: 10px;
+    text-align: center;
+}
+
+.item-display img {
+    max-width: 100%;
+    height: auto;
+}
+
+.checkout-box {
+    padding: 10px;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.checkout-box .quantity {
+    width: 50px;
+    padding: 5px;
+}
+
+.checkout-box .add-to-cart {
+    padding: 10px 20px;
+    background-color: #380346d8;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.checkout-box .add-to-cart:hover {
+    background-color: #380346;
+}
+
+.showcart-button {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #f1f1f1;
+    color: black;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.showcart-button:hover {
+    background-color: #380346;
+    color: white;
+}
+
+.showcart-button.active {
+    background-color: #380346;
+    color: white;
+}
+
+.cart-box {
+    display: none;
+    position: absolute;
+    width: 400px;
+    height: 600px;
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.cart-box.show {
+    display: block;
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cart-table th, .cart-table td {
+    border: 1px solid #ddd; /* Add table borders */
+    padding: 8px;
+    text-align: left;
+}
+
+.cart-table th {
+    text-align: left;
+}
+
+.cart-table th.item-column {
+    width: 70%; /* Item column takes up 70% */
+}
+
+.cart-table th.qty-column,
+.cart-table th.ip-column,
+.cart-table th.tp-column {
+    width: 10%; /* QTY, IP, and TP columns take up 10% each */
+}
+
+.cart-total {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: right; /* Align total to the right */
+}
+
+.cart-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto; /* Push buttons to the bottom */
+    padding-top: 20px;
+}
+
+.cart-actions button {
+    padding: 10px 20px;
+    background-color: #380346d8;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cart-actions button:hover {
+    background-color: #380346;
 }
