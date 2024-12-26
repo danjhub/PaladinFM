@@ -553,7 +553,10 @@ th, td {
 }
 
 .cart-table th.item-column {
-    width: 300px; /* Item column takes up 70% */
+    width: 30%; /* Item column takes up 30% */
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Add ellipsis for overflow text */
 }
 
 .cart-table th.qty-column,
