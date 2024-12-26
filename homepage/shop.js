@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Create the Show Cart button
     const showCartButton = document.createElement('button');
     showCartButton.classList.add('showcart-button');
-    showCartButton.textContent = 'Show Cart';
+    showCartButton.textContent = 'Show Cart (0)';
     showCartButton.addEventListener('click', toggleCart);
     shopCartContainer.appendChild(showCartButton);
 
@@ -158,9 +158,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const cartTotal = document.getElementById('cart-total');
         cartItems.innerHTML = '';
         let total = 0;
+        let itemCount = 0;
         cart.forEach(item => {
             const totalPrice = item.quantity * parseFloat(item.price.replace('$', ''));
             total += totalPrice;
+            itemCount += item.quantity;
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td>${item.name}</td>
@@ -171,6 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cartItems.appendChild(row);
         });
         cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+        showCartButton.textContent = `Show Cart (${itemCount})`;
     }
 
     document.getElementById('clear-cart').addEventListener('click', () => {
@@ -191,9 +194,9 @@ document.addEventListener('DOMContentLoaded', function() {
         cartBox.style.left = `${rect.right + window.scrollX}px`;
         cartBox.classList.toggle('show');
         if (cartBox.classList.contains('show')) {
-            showCartButton.textContent = 'Close Cart';
+            showCartButton.textContent = `Close Cart (${cart.reduce((sum, item) => sum + item.quantity, 0)})`;
         } else {
-            showCartButton.textContent = 'Show Cart';
+            showCartButton.textContent = `Show Cart (${cart.reduce((sum, item) => sum + item.quantity, 0)})`;
         }
     }
 
