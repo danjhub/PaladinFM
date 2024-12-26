@@ -540,6 +540,7 @@ th, td {
 .cart-table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed; /* Ensure fixed table layout */
 }
 
 .cart-table th, .cart-table td {
@@ -553,7 +554,7 @@ th, td {
 }
 
 .cart-table th.item-column {
-    width: 30%; /* Item column takes up 30% */
+    width: 70%; /* Item column takes up 10% */
     white-space: nowrap; /* Prevent text from wrapping */
     overflow: hidden; /* Hide overflow text */
     text-overflow: ellipsis; /* Add ellipsis for overflow text */
@@ -562,14 +563,28 @@ th, td {
 .cart-table th.qty-column,
 .cart-table th.ip-column,
 .cart-table th.tp-column {
-    width: 10%; /* QTY, IP, and TP columns take up 10% each */
+    width: 10%; /* QTY, IP, and TP columns take up 5% each */
+    text-align: center; /* Center align content */
+}
+
+.cart-table td.item-column {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+}
+
+.cart-table td.item-column img {
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
 }
 
 .cart-total {
     margin-top: 20px;
     font-size: 18px;
-    font-weight: bold;
-    text-align: right; /* Align total to the right */
 }
 
 .cart-actions {
@@ -592,3 +607,4 @@ th, td {
 .cart-actions button:hover {
     background-color: #380346;
 }
+

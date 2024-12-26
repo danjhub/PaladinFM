@@ -143,6 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
     updateCart();
 
     function addToCart(product, quantity) {
+        console.log('Adding to cart:', product, quantity); // Debug log
         const existingProduct = cart.find(item => item.name === product.name);
         if (existingProduct) {
             existingProduct.quantity += quantity;
@@ -160,12 +161,24 @@ document.addEventListener('DOMContentLoaded', function() {
         let total = 0;
         let itemCount = 0;
         cart.forEach(item => {
-            const totalPrice = item.quantity * parseFloat(item.price.replace('$', ''));
+            if (!item.price || typeof item.price !== 'string') {
+                console.error('Invalid price for item:', item);
+                return;
+            }
+            const price = parseFloat(item.price.replace('$', ''));
+            if (isNaN(price)) {
+                console.error('Invalid price format for item:', item);
+                return;
+            }
+            const totalPrice = item.quantity * price;
             total += totalPrice;
             itemCount += item.quantity;
             const row = document.createElement('tr');
             row.innerHTML = `
-                <td>${item.name}</td>
+                <td class="item-column">
+                    <img src="${item.image}" alt="${item.name}">
+                    ${item.name}
+                </td>
                 <td>${item.quantity}</td>
                 <td>${item.price}</td>
                 <td>$${totalPrice.toFixed(2)}</td>
@@ -175,13 +188,13 @@ document.addEventListener('DOMContentLoaded', function() {
         cartTotal.textContent = `Total: $${total.toFixed(2)}`;
         showCartButton.textContent = `Show Cart (${itemCount})`;
     }
-
+    
     document.getElementById('clear-cart').addEventListener('click', () => {
         cart = [];
         localStorage.setItem('cart', JSON.stringify(cart));
         updateCart();
     });
-
+    
     document.getElementById('checkout').addEventListener('click', () => {
         if (cart.length > 0) {
             redirectToAmazonCart(cart);
@@ -195,8 +208,10 @@ document.addEventListener('DOMContentLoaded', function() {
         cartBox.classList.toggle('show');
         if (cartBox.classList.contains('show')) {
             showCartButton.textContent = `Close Cart (${cart.reduce((sum, item) => sum + item.quantity, 0)})`;
+            showCartButton.classList.add('active');
         } else {
             showCartButton.textContent = `Show Cart (${cart.reduce((sum, item) => sum + item.quantity, 0)})`;
+            showCartButton.classList.remove('active');
         }
     }
 
