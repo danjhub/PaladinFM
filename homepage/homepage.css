@@ -553,7 +553,7 @@ th, td {
 }
 
 .cart-table th.item-column {
-    width: 70%; /* Item column takes up 70% */
+    width: 420px; /* Item column takes up 70% */
 }
 
 .cart-table th.qty-column,
