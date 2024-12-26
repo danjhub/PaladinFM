@@ -523,8 +523,8 @@ th, td {
 .cart-box {
     display: none;
     position: absolute;
-    width: 400px;
-    height: 600px;
+    width: 600px;
+    height: flex;
     background-color: white;
     border: 1px solid #ddd;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
