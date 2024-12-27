@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "name": "Client A",
+        "status": "new"
+    },
+    {
+        "id": 2,
+        "name": "Client B",
+        "status": "existing"
+    },
+    {
+        "id": 3,
+        "name": "Client C",
+        "status": "new"
+    }
+]

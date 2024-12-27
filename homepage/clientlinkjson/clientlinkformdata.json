@@ -1,0 +1,53 @@
+        {
+        "Clientdata": {
+            "name": "",
+            "address": "",
+            "phone": "",
+            "email": "",
+            "status": "e",
+            "dealStage": ""
+        },
+            "facility": {
+                "name": "",
+                "type": "",
+                "address": "",
+                "phone": "",
+                "email": "",
+                "website": "",
+                "gateHours": "",
+                "officeHours": "",
+                "callCenterHours": "",
+                "emergencyContact": "",
+                "notes": ""
+            },
+            "fieldData": {
+                "mannedOrUnmanned": "",
+                "buildings": "",
+                "office": "",
+                "floors": "",
+                "doors": "",
+                "emergencyExits": "",
+                "emergencyLights": "",
+                "fireExtinguishers": "",
+                "totalUnits": "",
+                "ccUnits": "",
+                "duUnits": "",
+                "interiorUnits": "",
+                "vacantUnits": "",
+                "reservedUnits": "",
+                "occupiedUnits": "",
+                "commercialUnits": "",
+                "outdoorParkingSpaces": "",
+                "enclosedParkingSpaces": "",
+                "gates": "",
+                "gateType": "",
+                "gateOperators": "",
+                "gateOperatorModel": "",
+                "gateOperatorSerial": "",
+                "keyPads": "",
+                "securityCameras": "",
+                "securityCameraModel": "",
+                "securityCameraSerial": ""
+            }
+
+    }

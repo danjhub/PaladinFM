@@ -11,7 +11,7 @@
         <div class="header-container">
             <div class="info-bar">
                 <div class="left-section">
-                    <a href="#">Home</a>
+                    <a href="#">Jordan Miller</a> /* User name will be updated here */
                 </div>
                 <div class="right-section" id="datetime">
                     <!-- Date and time will be updated here -->
@@ -26,11 +26,14 @@
         <nav class="navigation">
             <ul>
                 <li><a href="#" onclick="showContainer('dashboard-container', 'dashboard.js')">Dashboard</a></li>
+                <li><a href="#" onclick="showContainer('connect-container', 'connect.js')">Connect</a></li>
                 <li><a href="#" onclick="showContainer('tracker-container', 'tracker.js')">Tracker</a></li>
                 <li><a href="#" onclick="showContainer('knowledge-container', 'knowledge.js')">Knowledge</a></li>
                 <li><a href="#" onclick="showContainer('transitions-container', 'transitions.js')">Transitions</a></li>
                 <li><a href="#" onclick="showContainer('financial-container', 'financial.js')">Financial</a></li>
                 <li><a href="#" onclick="showContainer('audit-container', 'audit.js')">Audit</a></li>
+                <li><a href="#" onclick="showContainer('clientlink-container', 'clientlink.js')">ClientLink</a></li>
+                <li><a href="#" onclick="showContainer('manageiq-container', 'manageiq.js')">ManageIQ</a></li>
                 <li><a href="#" onclick="showContainer('shop-container', 'shop.js')">Shop</a></li>
                 <li><a href="#" onclick="showContainer('settings-container', 'settings.js')">Settings</a></li>
             </ul>
@@ -102,7 +105,55 @@
                     </main>
                 </div>
             </div>
-                
+            <!-- Connect content -->
+            <div id="connect-container" class="content-container">
+                <div class="container">
+                    <main id="main-content">
+                        <!-- Chat Feature -->
+                        <div class="chat-feature">
+                            <!-- User List -->
+                            <div class="user-list">
+                                <div class="user-box">
+                                    <img src="user1.jpg" alt="User 1" class="user-image">
+                                    <span class="user-name">User 1</span>
+                                </div>
+                                <div class="user-box">
+                                    <img src="user2.jpg" alt="User 2" class="user-image">
+                                    <span class="user-name">User 2</span>
+                                </div>
+                                <!-- Add more user boxes as needed -->
+                            </div>
+                            <!-- Chat Box -->
+                            <div class="chat-box">
+                                <div class="chat-display">
+                                    <!-- Chat messages will be displayed here -->
+                                    <div class="chat-messages">
+                                        <div class="message">
+                                            <img src="user1.jpg" alt="User 1" class="user-image">
+                                            <div class="message-content">
+                                                <p>Hello, how are you?</p>
+                                            </div>
+                                        </div>
+                                        <div class="message">
+                                            <img src="user2.jpg" alt="User 2" class="user-image">
+                                            <div class="message-content">
+                                                <p>I'm good, thanks! How about you?</p>
+                                            </div>
+                                        </div>
+                                        <!-- Add more messages as needed -->
+                                    </div>
+                                </div>
+                                <div class="chat-input">
+                                    <input type="text" placeholder="Type a message..." class="chat-input-field">
+                                    <button class="send-button">Send</button>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+                <script src="connect.js"></script>
+            </div>
+
             <!-- Tracker content -->
             <div id="tracker-container" class="content-container">
                 <div class="container">
@@ -319,10 +370,79 @@
 </div>
 <script src="knowledge.js"></script>
 
-            
 
             <div id="transitions-container" class="content-container">Transitions content here</div>
             <div id="financial-container" class="content-container">Financial content here</div>
+            
+            <div id="clientlink-container" class="content-container">
+                <div class="container">
+                    <main id="main-content">
+                        <!-- Client Link Content -->
+                        <div class="clientlink-content">
+                            <div class="client-list-container">
+                                <h2>Client List <button id="new-client-button" class="new-client-button">New Client</button></h2>
+                                <ul id="client-list">
+                                    <!-- Client names will be loaded here -->
+                                </ul>
+                            </div>
+                            <div class="client-data-container">
+                                <h2>Client Data</h2>
+                                <div id="client-data">
+                                    <!-- Client data will be displayed here -->
+                                </div>
+                            </div>
+                            <div class="facility-data-container">
+                                <h2>Facility Data</h2>
+                                <div class="facility-data-sections">
+                                    <div class="facility-info">
+                                        <!-- Facility data will be displayed here -->
+                                    </div>
+                                    <div class="field-data">
+                                        <!-- Field data will be displayed here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+            
+            <!-- New Client Form Modal -->
+<div id="new-client-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>New Client Intake</h2>
+        <form id="new-client-form">
+            <div class="form-sections">
+                <div class="form-section">
+                    <h3>Client Data</h3>
+                    <div id="client-data-section">
+                        <!-- Client data fields will be loaded here -->
+                    </div>
+                </div>
+                <div class="form-section">
+                    <h3>Facility Data</h3>
+                    <div id="facility-data-section">
+                        <!-- Facility data fields will be loaded here -->
+                    </div>
+                </div>
+                <div class="form-section">
+                    <h3>Field Data</h3>
+                    <div id="field-data-section">
+                        <!-- Field data fields will be loaded here -->
+                    </div>
+                </div>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+            
+            <script src="clientlink.js"></script>
+
+
+
+            
             <div id="audit-container" class="content-container">Audit content here</div>
             <div id="shop-container" class="content-container">
                 <div class="shop-bar">
