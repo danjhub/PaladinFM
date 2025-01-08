@@ -1,0 +1,18 @@
+{
+    "status": [
+        "Select Status:",
+        "Approved",
+        "Cancelled",
+        "Closed",
+        "Completed",
+        "In Progress",
+        "Not Applicable",
+        "Not Approved",
+        "Not Required",
+        "Not Started",
+        "On Hold",
+        "Open",
+        "Pending",
+        "Rejected"
+    ]
+}

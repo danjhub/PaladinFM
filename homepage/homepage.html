@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paladin FM</title>
     <link rel="stylesheet" href="homepage.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <header>
@@ -25,17 +26,19 @@
     <div class="main-content">
         <nav class="navigation">
             <ul>
-                <li><a href="#" onclick="showContainer('dashboard-container', 'dashboard.js')">Dashboard</a></li>
-                <li><a href="#" onclick="showContainer('connect-container', 'connect.js')">Connect</a></li>
-                <li><a href="#" onclick="showContainer('tracker-container', 'tracker.js')">Tracker</a></li>
-                <li><a href="#" onclick="showContainer('knowledge-container', 'knowledge.js')">Knowledge</a></li>
-                <li><a href="#" onclick="showContainer('transitions-container', 'transitions.js')">Transitions</a></li>
-                <li><a href="#" onclick="showContainer('financial-container', 'financial.js')">Financial</a></li>
-                <li><a href="#" onclick="showContainer('audit-container', 'audit.js')">Audit</a></li>
-                <li><a href="#" onclick="showContainer('clientlink-container', 'clientlink.js')">ClientLink</a></li>
-                <li><a href="#" onclick="showContainer('manageiq-container', 'manageiq.js')">ManageIQ</a></li>
-                <li><a href="#" onclick="showContainer('shop-container', 'shop.js')">Shop</a></li>
-                <li><a href="#" onclick="showContainer('settings-container', 'settings.js')">Settings</a></li>
+                <li><a href="#" onclick="showContainer('dashboard-container', 'dashboard.js', 'Dashboard')">Dashboard</a></li>
+                <li><a href="#" onclick="showContainer('connect-container', 'connect.js', 'Connect')">Connect</a></li>
+                <li><a href="#" onclick="showContainer('tracker-container', 'tracker.js', 'Tracker')">Tracker</a></li>
+                <li><a href="#" onclick="showContainer('knowledge-container', 'knowledge.js', 'Knowledge')">Knowledge</a></li>
+                <li><a href="#" onclick="showContainer('transitions-container', 'transitions.js', 'Transitions')">Transitions</a></li>
+                <li><a href="#" onclick="showContainer('performance-container', 'performance.js', 'Performance')">Performance</a></li>
+                <li><a href="#" onclick="showContainer('marketcomparison-container', 'marketcomparison.js', 'Market Comparison')">Market Comps</a></li>
+
+                <li><a href="#" onclick="showContainer('audit-container', 'audit.js', 'Audit')">Audit</a></li>
+                <li><a href="#" onclick="showContainer('clientlink-container', 'clientlink.js', 'ClientLink')">ClientLink</a></li>
+                <li><a href="#" onclick="showContainer('manageiq-container', 'manageiq.js', 'ManageIQ')">ManageIQ</a></li>
+                <li><a href="#" onclick="showContainer('shop-container', 'shop.js', 'Shop Amazon')">Shop</a></li>
+                <li><a href="#" onclick="showContainer('settings-container', 'settings.js', 'Settings')">Settings</a></li>
             </ul>
         </nav>
         <div class="display-section">
@@ -106,275 +109,558 @@
                 </div>
                 <script src="dashboard.js"></script>
             </div>
-            <!-- Connect content -->
-            <div id="connect-container" class="content-container">
-                <div class="container">
-                    <main id="main-content">
-                        <!-- Chat Feature -->
-                        <div class="chat-feature">
-                            <!-- User List -->
-                            <div class="user-list">
-                                <div class="user-box">
-                                    <img src="user1.jpg" alt="User 1" class="user-image">
-                                    <span class="user-name">User 1</span>
-                                </div>
-                                <div class="user-box">
-                                    <img src="user2.jpg" alt="User 2" class="user-image">
-                                    <span class="user-name">User 2</span>
-                                </div>
-                                <!-- Add more user boxes as needed -->
-                            </div>
-                            <!-- Chat Box -->
-                            <div class="chat-box">
-                                <div class="chat-display">
-                                    <!-- Chat messages will be displayed here -->
-                                    <div class="chat-messages">
-                                        <div class="message">
-                                            <img src="user1.jpg" alt="User 1" class="user-image">
-                                            <div class="message-content">
-                                                <p>Hello, how are you?</p>
-                                            </div>
-                                        </div>
-                                        <div class="message">
-                                            <img src="user2.jpg" alt="User 2" class="user-image">
-                                            <div class="message-content">
-                                                <p>I'm good, thanks! How about you?</p>
-                                            </div>
-                                        </div>
-                                        <!-- Add more messages as needed -->
-                                    </div>
-                                </div>
-                                <div class="chat-input">
-                                    <input type="text" placeholder="Type a message..." class="chat-input-field">
-                                    <button class="send-button">Send</button>
-                                </div>
-                            </div>
-                        </div>
-                    </main>
-                </div>
-                <script src="connect.js"></script>
-            </div>
 
-            <!-- Tracker content -->
-            <div id="tracker-container" class="content-container">
-                <div class="container">
-                    <main id="main-content">
-                        <!-- Content will be loaded here -->
-                        <div id="tracker-content">
-                            <form class="add-row" id="maintenance-form">
-                                <input type="text" id="projectName" placeholder="Project Name">
-                                <input type="date" id="dateReported">
-                                <select id="status"></select>
-                                <select id="priority"></select>
-                                <input type="text" id="quoteAmount" placeholder="Quote Amount">
-                                <select id="maintenanceCategory"></select>
-                                <select id="approvalStatus"></select>
-                                <input type="text" id="unitNumber" placeholder="Unit Number">
-                                <input type="date" id="scheduledDOC">
-                                <button id="add-button" type="submit">Add</button>
-                            </form>
-                            <table id="maintenance-table">
-                                <thead>
-                                    <tr>
-                                        <th>Project Name</th>
-                                        <th>Date Reported</th>
-                                        <th>Status</th>
-                                        <th>Priority</th>
-                                        <th>Quote Amount</th>
-                                        <th>Maintenance Category</th>
-                                        <th>Approval Status</th>
-                                        <th>Unit Number</th>
-                                        <th>Scheduled DOC</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="placeholder-row">
-                                        <td colspan="9">Wow! So Empty!</td>
-                                    </tr>
-                                    <!-- Additional rows will be added here -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </main>
-                </div>
-                <script src="tracker.js"></script>
-            </div>
 
-<!-- Knowledge content -->
-<div id="knowledge-container" class="content-container">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Connect content -->
+<div id="connect-container" class="content-container">
     <div class="container">
         <main id="main-content">
-            <!-- Content will be loaded here -->
-            <div id="knowledge-content">
-                <div class="tabs">
-                    <button class="tab-button" onclick="showTable('facility-table')">Facility</button>
-                    <button class="tab-button" onclick="showTable('field-table')">Field</button>
-                    <button class="tab-button" onclick="showTable('software-table')">Software</button>
-                    <button class="tab-button" onclick="showTable('utilities-table')">Utilities</button>
-                    <button class="tab-button" onclick="showTable('vendors-table')">Vendors</button>
-                    <select id="category" name="category" onchange="showFormFields()">
-                        <option value="" disabled selected>Add New Knowledge</option>
-                        <option value="facility">Facility</option>
-                        <option value="field">Field</option>
-                        <option value="software">Software</option>
-                        <option value="utilities">Utilities</option>
-                        <option value="vendors">Vendors</option>
-                    </select>
+            <!-- Chat Feature -->
+            <div class="chat-feature">
+                <!-- User List -->
+                <div class="user-list">
+                    <div class="user-box">
+                        <img src="user1.jpg" alt="User 1" class="user-image">
+                        <span class="user-name">User 1</span>
+                    </div>
+                    <div class="user-box">
+                        <img src="user2.jpg" alt="User 2" class="user-image">
+                        <span class="user-name">User 2</span>
+                    </div>
+                    <!-- Add more user boxes as needed -->
                 </div>
-                <form class="add-row" id="knowledge-form" style="display: none;">
-                    <div id="form-fields"></div>
-                    <button id="add-button" type="submit">Add</button>
-                </form>
-                
-                <table id="facility-table" class="knowledge-table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Asset Type</th>
-                            <th>Address</th>
-                            <th>Phone</th>
-                            <th>Email</th>
-                            <th>Website</th>
-                            <th>Access Hours</th>
-                            <th>Office Hours</th>
-                            <th>Call Center Hours</th>
-                            <th>Emergency Contact</th>
-                            <th>Notes</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Table rows will be added here -->
-                        <tr class="placeholder-row">
-                            <td colspan="11">Wow! So Empty!</td>
-                        </tr>
-                        
-                    </tbody>
-                </table>
-                <table id="field-table" class="knowledge-table">
-                    <thead>
-                        <tr>
-                            <th>Location</th>
-                            <th>Manned or Unmanned</th>
-                            <th>Buildings</th>
-                            <th>Office</th>
-                            <th>Floors</th>
-                            <th>Doors</th>
-                            <th>Emergency Exits</th>
-                            <th>Emergency Lights</th>
-                            <th>Fire Extinguishers</th>
-                            <th>Total Units</th>
-                            <th>CC Units</th>
-                            <th>DU Units</th>
-                            <th>Interior Units</th>
-                            <th>Vacant Units</th>
-                            <th>Reserved Units</th>
-                            <th>Occupied Units</th>
-                            <th>Commercial Units</th>
-                            <th>Outdoor Parking Spaces</th>
-                            <th>Enclosed Parking Spaces</th>
-                            <th>Gates</th>
-                            <th>Gate Type</th>
-                            <th>Gate Operators</th>
-                            <th>Gate Operator Model</th>
-                            <th>Gate Operator Serial</th>
-                            <th>Key Pads</th>
-                            <th>Security Cameras</th>
-                            <th>Security Camera Model</th>
-                            <th>Security Camera Serial</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Table rows will be added here -->
-                        <tr class="placeholder-row">
-                            <td colspan="28">Wow! So Empty!</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table id="software-table" class="knowledge-table">
-                    <thead>
-                        <tr>
-                            <th>Facility Name</th>
-                            <th>Software Category</th>
-                            <th>Company Name</th>
-                            <th>Contact Name</th>
-                            <th>Phone</th>
-                            <th>Email</th>
-                            <th>Website</th>
-                            <th>Office Address</th>
-                            <th>Monthly Expenses</th>
-                            <th>COI Policy Number</th>
-                            <th>COI Policy Expiration Date</th>
-                            <th>Contract Sign Date</th>
-                            <th>Contract Expiration Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Table rows will be added here -->
-                        <tr class="placeholder-row">
-                            <td colspan="13">Wow! So Empty!</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table id="utilities-table" class="knowledge-table">
-                    <thead>
-                        <tr>
-                            <th>Facility Name</th>
-                            <th>Utility Category</th>
-                            <th>Company Name</th>
-                            <th>Contact Name</th>
-                            <th>Phone</th>
-                            <th>Email</th>
-                            <th>Website</th>
-                            <th>Office Address</th>
-                            <th>Monthly Expenses</th>
-                            <th>COI Policy Number</th>
-                            <th>COI Policy Expiration Date</th>
-                            <th>Contract Sign Date</th>
-                            <th>Contract Expiration Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Table rows will be added here -->
-                        <tr class="placeholder-row">
-                            <td colspan="13">Wow! So Empty!</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table id="vendors-table" class="knowledge-table">
-                    <thead>
-                        <tr>
-                            <th>Facility Name</th>
-                            <th>Vendor Category</th>
-                            <th>Company Name</th>
-                            <th>Contact Name</th>
-                            <th>Phone</th>
-                            <th>Email</th>
-                            <th>Website</th>
-                            <th>Office Address</th>
-                            <th>Monthly Expenses</th>
-                            <th>COI Policy Number</th>
-                            <th>COI Policy Expiration Date</th>
-                            <th>Contract Sign Date</th>
-                            <th>Contract Expiration Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Table rows will be added here -->
-                        <tr class="placeholder-row">
-                            <td colspan="13">Wow! So Empty!</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <!-- Chat Box -->
+                <div class="chat-box">
+                    <div class="chat-display">
+                        <!-- Chat messages will be displayed here -->
+                        <div class="chat-messages">
+                            <div class="message">
+                                <img src="user1.jpg" alt="User 1" class="user-image">
+                                <div class="message-content">
+                                    <p>Hello, how are you?</p>
+                                </div>
+                            </div>
+                            <div class="message">
+                                <img src="user2.jpg" alt="User 2" class="user-image">
+                                <div class="message-content">
+                                    <p>I'm good, thanks! How about you?</p>
+                                </div>
+                            </div>
+                            <!-- Add more messages as needed -->
+                        </div>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" placeholder="Type a message..." class="chat-input-field">
+                        <button class="send-button">Send</button>
+                    </div>
+                </div>
             </div>
         </main>
     </div>
+    <script src="connect.js"></script>
 </div>
-<script src="knowledge.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Tracker content -->
+<div id="tracker-container" class="content-container">
+    <div class="container">
+        <main id="main-content">
+            <div class="tracker-content">
+                <div class="tracker-facility-list-container">
+                    <div class="tracker-facility-list-titlesection"><h2>Facility List</h2></div>
+                    <ul id="tracker-facility-list">
+                        <!-- Facility names will be loaded here -->
+                    </ul>
+                </div>
+                <div class="tracker-project-list-container">
+                    <div class="tracker-project-list-titlesection"><h2>Projects</h2></div>
+                    <ul id="tracker-project-list">
+                        <!-- Project list will be loaded here -->
+                    </ul>
+                </div>
+                <div class="tracker-details-column">
+                    <div class="tracker-data-container">
+                        <div class="tracker-data-titlesection"><h2>Project Details</h2></div>
+                        <div id="tracker-data">
+                            <!-- Project details will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+                <div class="tracker-actions-mini-connect-column">
+                    <div class="tracker-buttons-container">
+                        <div id="tracker-buttons" class="tracker-buttons">
+                            <!-- Buttons will be loaded here -->
+                            <button id="tracker-photos-button" class="tracker-button">Photos</button>
+                            <button id="documents-Button" class="tracker-button">Documents</button>
+                            <button id="placeholder" class="ph-button">placeholder</button>
+                            <button id="send-for-approval" class="tracker-button">Que for Approval</button>
+                            <button id="complete-project" class="tracker-button">Complete Project</button>
+                            <button id="delete-project" class="tracker-button">Delete Project</button>
+                        </div>
+                    </div>
+                    <div class="tracker-mini-connect-container">
+                        <div class="tracker-mini-connect-titlesection">
+                            <h2>Mini Connect</h2>
+                            <h3>Chat with team members</h3>
+                            <h3>Share project updates</h3>
+                            <h3>Stay connected</h3>
+                        </div>
+                        <div id="tracker-mini-connect">
+                            <!-- Mini connect content will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="tracker.js"></script>
+</div>
+
+<!-- The Modal -->
+<div id="tracker-photosModal" class="tracker-modal">
+    <div class="tracker-modal-content">
+        <span class="tracker-close">&times;</span>
+        <div id="tracker-photosContainer">
+            <!-- Images will be loaded here -->
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- Knowledge content -->
+ <div id="knowledge-container" class="content-container">
+    <div class="container">
+        <main id="main-content">
+            <!-- Knowledge Content -->
+            <div class="knowledge-content">
+                <div class="knowledge-facility-list-container">
+                    <div class="knowledge-facility-list-titlesection"><h2>Facility List </h2></div>   
+                    <ul id="knowledge-facility-list">
+                        <!-- Facility names will be loaded here -->
+                    </ul>
+                </div>
+                <!-- Flex row for facility, software, and vendor data -->
+                <div class="knowledge-facility-data-row">
+                    
+                    <div class="knowledge-facility-data-container">
+                        <div class="knowledge-facility-data-titlesection"><h2>Facility Data</h2>
+                            <div class="knowledge-facility-buttons">
+                                <button class="knowledge-facility-button" id="photosButton">Photos</button>
+                                <button class="knowledge-facility-button" id="mapButton">Facility Map</button>
+                                <button class="knowledge-facility-button" id="documentsButton">Documents</button>
+                            </div>
+                        </div> 
+                        <div class="knowledge-facility-data-sections">
+                            <div class="knowledge-facility-info">
+                                <!-- Facility info data -->
+                                
+                            </div>
+                                
+                            <div class="knowledge-field-data">
+                                <!-- Field data -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="knowledge-software-data-container">
+                        <div class="knowledge-software-data-titlesection"><h2>Software </h2></div> 
+                        <div id="knowledge-software-data">
+                            <!-- Software data -->
+                        </div>
+                        
+                    </div>
+                    <div class="knowledge-vendor-data-container">
+                        <div class="knowledge-vendor-data-titlesection"><h2>Vendors </h2></div> 
+                        <div id="knowledge-vendor-data">
+                            <!-- Vendor data -->
+                        </div>
+                    </div>
+                    <!-- Modal -->
+                    <div id="photosModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <div id="photosContainer">
+                                <!-- Photos will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="knowledge.js"></script>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
             <div id="transitions-container" class="content-container">Transitions content here</div>
-            <div id="financial-container" class="content-container">Financial content here</div>
             
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+            <div id="performance-container" class="content-container">
+                <div class="container">
+                    <main id="main-content">
+                        <!-- Knowledge Content -->
+                        <div class="performance-content">
+                            <div class="performance-facility-list-container">
+                                <div class="performance-facility-list-titlesection"><h2>Facility List </h2></div>   
+                                <ul id="performance-facility-list">
+                                    <!-- Facility names will be loaded here -->
+                                </ul>
+                            </div>
+                            <div class="performance-data-container">
+                                <div class="performance-revenue">
+                                    <div id="performance-revenue-content">
+                                        <div class="mtd-kpi-data">
+                                            <!-- Revenue KPI data will be loaded here -->
+                                        </div>
+                                        <div class="kpi-graphs">
+                                            <!-- Revenue KPI graphs will be loaded here -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="performance-occupancy">
+                                    <div id="performance-occupancy-content">
+                                        <div class="mtd-occ-data">
+                                            <!-- Occupancy KPI data will be loaded here -->
+                                        </div>
+                                        <div class="occ-graphs">
+                                            <!-- Occupancy KPI graphs will be loaded here -->
+                                        </div>
+                                        <div class="mtd-traffic-data">
+                                            <!-- Traffic KPI data will be loaded here -->
+                                        </div>
+                                        <div class="traffic-graphs">
+                                            <!-- Traffic KPI graphs will be loaded here -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="performance-arplus">
+                                    <div id="performance-arplus-content">
+                                        <div class="mtd-ar-data">
+                                            <!-- ARPlus KPI data will be loaded here -->
+                                        </div>
+                                        <div class="ar-graphs">
+                                            <!-- ARPlus KPI graphs will be loaded here -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                    <script src="performance.js"></script>
+                </div>
+            </div>    
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="marketcomparison-container" class="content-container">
+                <div class="container">
+                    <main id="main-content">
+                        <!-- Market Comparison Content -->
+                        <div class="marketcomparison-content">
+                            <div class="marketcomparison-facility-list-container">
+                                 
+                                <div class="marketcomparison-buttons">
+                                    <button class="marketcomparison-button" id="mapbtn">Map View</button>
+                                    <button class="marketcomparison-button" id="listbtn">Comp List</button>
+                                    <button class="marketcomparison-button" id="rateanalysisbtn">Rate Analysis</button>
+                                </div> 
+                                <div class="marketcomparison-facility-list-titlesection"><h2>Facility List </h2></div> 
+                                <ul id="marketcomparison-facility-list">
+                                    <!-- Facility names will be loaded here -->
+                                </ul>
+                            </div>
+                            <div class="marketcomparison-display-container">
+                                <div class="marketcomparison-map-container">
+                                    <div id="marketcomparison-map"></div>
+                                </div>
+                                <div class="marketcomparison-list-container">
+                                    <ul id="marketcomparison-list">
+                                        <!-- Facility names will be loaded here -->
+                                    </ul>
+                                </div>
+                                <div class="marketcomparison-rateanalysis-container">
+                                    <canvas id="marketcomparison-rateanalysis"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                    <script src="marketcomparison.js"></script>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <div id="clientlink-container" class="content-container" style="display: none;">
                 <div class="container">
                     <main id="main-content">
@@ -444,8 +730,115 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             
             <div id="audit-container" class="content-container">Audit content here</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <div id="shop-container" class="content-container">
                 <div class="shop-bar">
                     <div class="shop-tabs">
@@ -467,5 +860,56 @@
         </div>
     </div>
     <script src="homepage.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>

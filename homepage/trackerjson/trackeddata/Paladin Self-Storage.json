@@ -1,0 +1,46 @@
+{
+    "projects": [
+        {
+            "projectid": "01",
+            "projectName": "Broken door",
+            "dateReported": "12/17/2024",
+            "status": "In Progress",
+            "priority": "High",
+            "quoteAmount": "$100.00",
+            "approvalStatus": "Approved",
+            "maintenanceCategory": "Door",
+            "unitNumber": "A1",
+            "scheduledDOC": "12/20/2024",
+            "Notes": "The door is broken and needs to be fixed.",
+            "imagePath": "trackeddataphotos/Paladin Self-Storage/01/projectphotos.json"
+        },
+        {
+            "projectid": "02",
+            "projectName": "Trash in the hallway",
+            "dateReported": "12/17/2024",
+            "status": "In Progress",
+            "priority": "High",
+            "quoteAmount": "$0.00",
+            "approvalStatus": "Approved",
+            "maintenanceCategory": "Junk Removal",
+            "unitNumber": "69",
+            "scheduledDOC": "01/15/2025",
+            "Notes": "Tenant left trash and furniture in the hallway. Need to remove it.",
+            "imagePath": "trackeddataphotos/Paladin Self-Storage/02/projectphotos.json"
+        },
+        {
+            "projectid": "03",
+            "projectName": "New latches needed",
+            "dateReported": "12/17/2024",
+            "status": "Approved",
+            "priority": "Low",
+            "quoteAmount": "$275.00",
+            "approvalStatus": "Approved",
+            "maintenanceCategory": "Door",
+            "unitNumber": "A2, B3, C6, G7",
+            "scheduledDOC": "01/20/2025",
+            "Notes": "Order 4 new latches for the doors and install them.",
+            "imagePath": "trackeddataphotos/Paladin Self-Storage/03/projectphotos.json"
+        }
+    ]
+}

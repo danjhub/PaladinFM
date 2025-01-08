@@ -215,6 +215,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    function hideCart() {
+        cartBox.classList.remove('show');
+        showCartButton.textContent = `Show Cart (${cart.reduce((sum, item) => sum + item.quantity, 0)})`;
+        showCartButton.classList.remove('active');
+    }
+
     function redirectToAmazonCart(cart) {
         // This function should call your server-side code to generate the Amazon cart URL
         fetch('/generate-amazon-cart-url', {
@@ -237,4 +243,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initially hide the cart box
     cartBox.classList.add('hide');
+
+    // Add event listener to close cart if clicking outside of shop container
+    document.addEventListener('click', (event) => {
+        if (!shopContainer.contains(event.target) && !cartBox.contains(event.target) && !showCartButton.contains(event.target)) {
+            hideCart();
+        }
+    });
 });

@@ -10,7 +10,7 @@ setInterval(updateDateTime, 1000);
 updateDateTime();
 
 /* Function to show the correct container and load its JS file */
-function showContainer(containerId, scriptPath) {
+function showContainer(containerId, scriptPath, headerText) {
     const containers = document.querySelectorAll('.content-container');
     containers.forEach(container => {
         container.style.display = 'none';
@@ -26,4 +26,15 @@ function showContainer(containerId, scriptPath) {
             document.body.appendChild(script);
         }
     }
+
+    // Update the header text
+    if (headerText) {
+        updateHeaderText(headerText);
+    }
+}
+
+/* Function to update the header text */
+function updateHeaderText(text) {
+    const header = document.querySelector('.header-content h1');
+    header.textContent = text;
 }

@@ -1,372 +1,391 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Show facility table by default
-    showTable('facility-table');
-    selectTabButton('facility-table');
-    
-    // Setup form submission handler
-    document.getElementById('knowledge-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-        handleFormSubmit();
-    });
+    // Load facility list
+    loadFacilityList();
 
-    // Setup event listeners for tab buttons
-    document.querySelectorAll('.tab-button').forEach(button => {
-        button.addEventListener('click', (event) => {
-            event.preventDefault();
-            const tableId = button.getAttribute('onclick').match(/showTable\('(.+)'\)/)[1];
-            showTable(tableId);
-            selectTabButton(tableId);
-        });
-    });
-
-    // Show the add-row form when an option is selected
-    document.getElementById('category').addEventListener('change', () => {
-        const knowledgeForm = document.getElementById('knowledge-form');
-        knowledgeForm.style.display = 'flex';
-    });
-
-    // Create and append the tooltip to the body
-    createTooltip();
-
-    // Add event listeners to show and hide the tooltip for notes fields in the table
-    document.addEventListener('focusin', (event) => {
-        if (event.target.classList.contains('notes-field') && event.target.closest('table')) {
-            showTooltip(event.target);
-        } else if (event.target.classList.contains('notes-field')) {
-            event.target.style.width = '400px';
-            event.target.style.height = '400px';
-        }
-    });
-
-    document.addEventListener('focusout', (event) => {
-        if (event.target.classList.contains('notes-field') && !event.target.closest('table')) {
-            event.target.style.width = '';
-            event.target.style.height = '';
-        }
-    });
-
-    // Add event listeners to show and hide the tooltip for notes fields in the table
-    document.addEventListener('mouseover', (event) => {
-        if (event.target.classList.contains('notes-field') && event.target.closest('table')) {
-            showTooltip(event.target);
-        }
-    });
-
-    document.addEventListener('mouseout', (event) => {
-        if (event.target.classList.contains('notes-field') && event.target.closest('table')) {
-            const tooltip = document.getElementById('notes-tooltip');
-            if (!tooltip.contains(event.relatedTarget)) {
-                hideTooltip();
-            }
-        }
-    });
-
-    // Add event listener to keep the tooltip open and editable when clicked
-    document.addEventListener('click', (event) => {
-        if (event.target.classList.contains('notes-field') && event.target.closest('table')) {
-            makeTooltipEditable(event.target);
-        }
-    });
+    // Hide the knowledge container initially
+    document.getElementById('knowledge-container').style.display = 'none';
 });
 
-function createTooltip() {
-    const tooltip = document.createElement('div');
-    tooltip.id = 'notes-tooltip';
-    tooltip.className = 'tooltip';
-    tooltip.style.display = 'none';
-    document.body.appendChild(tooltip);
+function loadFacilityList() {
+    fetch('knowledgejson/facilitylist.json')
+        .then(response => response.json())
+        .then(facilityList => {
+            const facilityListContainer = document.getElementById('knowledge-facility-list');
+            facilityList.forEach(facility => {
+                const listItem = document.createElement('li');
+                listItem.textContent = facility.name;
+                listItem.addEventListener('click', () => {
+                    loadFacilityData(facility.name);
+                    setActiveItem(listItem, '.knowledge-facility-list-container li');
+                });
+                facilityListContainer.appendChild(listItem);
+            });
+        })
+        .catch(error => console.error('Error loading facility list:', error));
+}
 
-    // Add CSS styles for the tooltip
-    const style = document.createElement('style');
-    style.innerHTML = `
-        .tooltip {
-            position: absolute;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            padding: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            width: 400px; /* Fixed width */
-            height: 400px; /* Fixed height */
-            overflow: hidden; /* Hide scroll bars */
-            word-wrap: break-word;
-            font-size: 14px;
-            color: #333;
-            border-radius: 4px;
-        }
-        .tooltip-toolbar {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-        }
-        .tooltip-toolbar button {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .tooltip-textarea {
-            width: 100%;
-            height: calc(100% - 40px); /* Adjust height to account for toolbar and close button */
-            border: none;
-            resize: none;
-            outline: none;
-        }
-        .tooltip-close {
-            background-color: #380346;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            margin-right: auto; /* Align to the left */
-        }
-        .tooltip-close:hover {
-            background-color: #29976b;
-        }
+function loadFacilityData(facilityName) {
+    fetch(`knowledgejson/facilitydata/${facilityName}.json`)
+        .then(response => response.json())
+        .then(facilityData => {
+            displayFacilityData(facilityData[0]);
+            // Show the knowledge container when data is loaded
+            document.getElementById('knowledge-container').style.display = 'block';
+        })
+        .catch(error => console.error('Error loading facility data:', error));
+}
+
+function displayFacilityData(data) {
+    const facilityInfoContainer = document.querySelector('.knowledge-facility-info');
+    const fieldDataContainer = document.querySelector('.knowledge-field-data');
+    const softwareDataContainer = document.getElementById('knowledge-software-data');
+    const vendorDataContainer = document.getElementById('knowledge-vendor-data');
+
+    // Clear previous data
+    facilityInfoContainer.innerHTML = '';
+    fieldDataContainer.innerHTML = '';
+    softwareDataContainer.innerHTML = '';
+    vendorDataContainer.innerHTML = '';
+
+    // Display facility info
+    facilityInfoContainer.innerHTML = `
+        <p><strong>Name:</strong> ${data.facility.name}</p>
+        <p><strong>Type:</strong> ${data.facility.type}</p>
+        <p><strong>Address:</strong> ${data.facility.address}</p>
+        <p><strong>Phone:</strong> ${data.facility.phone}</p>
+        <p><strong>Email:</strong> ${data.facility.email}</p>
+        <p><strong>Website:</strong> <a href="${data.facility.website}" target="_blank">${data.facility.website}</a></p>
+        <p><strong>Gate Hours:</strong> ${data.facility.gateHours}</p>
+        <p><strong>Office Hours:</strong> ${data.facility.officeHours}</p>
+        <p><strong>Call Center Hours:</strong> ${data.facility.callCenterHours}</p>
+        <p><strong>Emergency Contact:</strong> ${data.facility.emergencyContact}</p>
+        <p><strong>Notes:</strong> ${data.facility.notes}</p>
     `;
-    document.head.appendChild(style);
-}
 
-function showTooltip(target) {
-    const tooltip = document.getElementById('notes-tooltip');
-    tooltip.textContent = target.value;
-    tooltip.style.display = 'block';
-    const rect = target.getBoundingClientRect();
-    tooltip.style.left = `${rect.left + window.scrollX - tooltip.offsetWidth}px`;
-    tooltip.style.top = `${rect.top + window.scrollY}px`;
-}
-
-function hideTooltip() {
-    const tooltip = document.getElementById('notes-tooltip');
-    tooltip.style.display = 'none';
-}
-
-function makeTooltipEditable(target) {
-    const tooltip = document.getElementById('notes-tooltip');
-    tooltip.innerHTML = `
-        <div class="tooltip-toolbar">
-            <button class="tooltip-close" onclick="hideTooltip()">Close</button>
-            <button onclick="document.execCommand('bold', false, '');"><b>B</b></button>
-            <button onclick="document.execCommand('italic', false, '');"><i>I</i></button>
-            <button onclick="document.execCommand('insertUnorderedList', false, '');">•</button>
-        </div>
-        <textarea class="tooltip-textarea">${target.value}</textarea>
+    // Display field data
+    fieldDataContainer.innerHTML = `
+        <p><strong>Manned or Unmanned:</strong> ${data.fieldData.mannedOrUnmanned}</p>
+        <p><strong>Buildings:</strong> ${data.fieldData.buildings}</p>
+        <p><strong>Office:</strong> ${data.fieldData.office}</p>
+        <p><strong>Floors:</strong> ${data.fieldData.floors}</p>
+        <p><strong>Doors:</strong> ${data.fieldData.doors}</p>
+        <p><strong>Emergency Exits:</strong> ${data.fieldData.emergencyExits}</p>
+        <p><strong>Emergency Lights:</strong> ${data.fieldData.emergencyLights}</p>
+        <p><strong>Fire Extinguishers:</strong> ${data.fieldData.fireExtinguishers}</p>
+        <p><strong>Total Units:</strong> ${data.fieldData.totalUnits}</p>
+        <p><strong>CC Units:</strong> ${data.fieldData.ccUnits}</p>
+        <p><strong>DU Units:</strong> ${data.fieldData.duUnits}</p>
+        <p><strong>Interior Units:</strong> ${data.fieldData.interiorUnits}</p>
+        <p><strong>Vacant Units:</strong> ${data.fieldData.vacantUnits}</p>
+        <p><strong>Reserved Units:</strong> ${data.fieldData.reservedUnits}</p>
+        <p><strong>Occupied Units:</strong> ${data.fieldData.occupiedUnits}</p>
+        <p><strong>Commercial Units:</strong> ${data.fieldData.commercialUnits}</p>
+        <p><strong>Outdoor Parking Spaces:</strong> ${data.fieldData.outdoorParkingSpaces}</p>
+        <p><strong>Enclosed Parking Spaces:</strong> ${data.fieldData.enclosedParkingSpaces}</p>
+        <p><strong>Gates:</strong> ${data.fieldData.gates}</p>
+        <p><strong>Gate Type:</strong> ${data.fieldData.gateType}</p>
+        <p><strong>Gate Operators:</strong> ${data.fieldData.gateOperators}</p>
+        <p><strong>Gate Operator Model:</strong> ${data.fieldData.gateOperatorModel}</p>
+        <p><strong>Gate Operator Serial:</strong> ${data.fieldData.gateOperatorSerial}</p>
+        <p><strong>Key Pads:</strong> ${data.fieldData.keyPads}</p>
+        <p><strong>Security Cameras:</strong> ${data.fieldData.securityCameras}</p>
+        <p><strong>Security Camera Model:</strong> ${data.fieldData.securityCameraModel}</p>
+        <p><strong>Security Camera Serial:</strong> ${data.fieldData.securityCameraSerial}</p>
     `;
-    const textarea = tooltip.querySelector('.tooltip-textarea');
-    textarea.style.width = '100%';
-    textarea.style.height = 'calc(100% - 40px)';
-    textarea.addEventListener('input', () => {
-        target.value = textarea.value;
-    });
-    textarea.addEventListener('blur', () => {
-        if (!tooltip.contains(document.activeElement)) {
-            hideTooltip();
-        }
-    });
-    textarea.focus();
-}
 
-function showFormFields() {
-    const category = document.getElementById('category').value;
-    const formFields = document.getElementById('form-fields');
-    formFields.innerHTML = ''; // Clear existing fields
-    
-    // Get headers from selected table
-    const tableHeaders = Array.from(
-        document.querySelector(`#${category}-table thead`).getElementsByTagName('th')
-    );
-    
-    // Create input fields based on table headers
-    tableHeaders.forEach(header => {
-        if (header.textContent === 'Asset Type' && category === 'facility') {
-            // Create a dropdown for facility asset type
-            const select = document.createElement('select');
-            select.className = 'form-input';
-            select.name = 'asset-type';
-            formFields.appendChild(select);
-
-            // Fetch options from facilitytype.json
-            fetch('knowledgejson/facilitytype.json')
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Facility types:', data); // Debug log
-                    Object.keys(data).forEach(key => {
-                        const option = document.createElement('option');
-                        option.value = key;
-                        option.textContent = data[key].description;
-                        select.appendChild(option);
-                    });
-                })
-                .catch(error => console.error('Error loading facility types:', error));
-        } else if (header.textContent === 'Location' || header.textContent === 'Facility Name') {
-            // Create a dropdown for location or facility name
-            const select = document.createElement('select');
-            select.className = 'form-input';
-            select.name = header.textContent.toLowerCase().replace(/\s+/g, '-');
-            formFields.appendChild(select);
-
-            // Fetch options from facilityname.json
-            fetch('knowledgejson/facilityname.json')
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Facility names:', data); // Debug log
-                    Object.keys(data).forEach(key => {
-                        const option = document.createElement('option');
-                        option.value = key;
-                        option.textContent = key;
-                        select.appendChild(option);
-                    });
-                })
-                .catch(error => console.error('Error loading facility names:', error));
-        } else if (header.textContent === 'Software Category' && category === 'software') {
-            // Create a dropdown for software category
-            const select = document.createElement('select');
-            select.className = 'form-input';
-            select.name = 'software-category';
-            formFields.appendChild(select);
-
-            // Fetch options from softwareclass.json
-            fetch('knowledgejson/softwareclass.json')
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Software classes:', data); // Debug log
-                    Object.keys(data).forEach(key => {
-                        const option = document.createElement('option');
-                        option.value = key;
-                        option.textContent = data[key];
-                        select.appendChild(option);
-                    });
-                })
-                .catch(error => console.error('Error loading software classes:', error));
-        } else if (header.textContent === 'Utility Category' && category === 'utilities') {
-            // Create a dropdown for utility category
-            const select = document.createElement('select');
-            select.className = 'form-input';
-            select.name = 'utility-category';
-            formFields.appendChild(select);
-
-            // Fetch options from utilityclass.json
-            fetch('knowledgejson/utilityclass.json')
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Utility classes:', data); // Debug log
-                    Object.keys(data).forEach(key => {
-                        const option = document.createElement('option');
-                        option.value = key;
-                        option.textContent = data[key];
-                        select.appendChild(option);
-                    });
-                })
-                .catch(error => console.error('Error loading utility classes:', error));
-        } else if (header.textContent === 'Vendor Category' && category === 'vendors') {
-            // Create a dropdown for vendor category
-            const select = document.createElement('select');
-            select.className = 'form-input';
-            select.name = 'vendor-category';
-            formFields.appendChild(select);
-
-            // Fetch options from vendorclass.json
-            fetch('knowledgejson/vendorclass.json')
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Vendor classes:', data); // Debug log
-                    Object.keys(data).forEach(key => {
-                        const option = document.createElement('option');
-                        option.value = key;
-                        option.textContent = data[key];
-                        select.appendChild(option);
-                    });
-                })
-                .catch(error => console.error('Error loading vendor classes:', error));
-        } else {
-            // Create a text input for other fields
-            const input = document.createElement('input');
-            input.type = 'text';
-            input.placeholder = header.textContent;
-            input.className = 'form-input';
-            input.name = header.textContent.toLowerCase().replace(/\s+/g, '-');
-            if (header.textContent === 'Notes') {
-                input.classList.add('notes-field');
+    // Display software data
+    data.softwareData.forEach(software => {
+        const listItem = document.createElement('li');
+        listItem.textContent = software['Select Software Category'];
+        listItem.addEventListener('click', function() {
+            const details = this.querySelector('.knowledge-software-details');
+            if (details.style.display === 'none' || details.style.display === '') {
+                details.style.display = 'block';
+            } else {
+                details.style.display = 'none';
             }
-            formFields.appendChild(input);
-        }
+            toggleActiveItem(listItem);
+        });
+
+        const details = document.createElement('div');
+        details.className = 'knowledge-software-details';
+        details.innerHTML = `
+            <p><strong>Software Name:</strong> ${software['Software Name']}</p>
+            <p><strong>Company Name:</strong> ${software['Company Name']}</p>
+            <p><strong>Contact Name:</strong> ${software['Contact Name']}</p>
+            <p><strong>Phone:</strong> ${software['Phone']}</p>
+            <p><strong>Email:</strong> ${software['Email']}</p>
+            <p><strong>Website:</strong> <a href="${software['Website']}" target="_blank">${software['Website']}</a></p>
+            <p><strong>Office Address:</strong> ${software['OfficeAddress']}</p>
+            <p><strong>Monthly Expenses:</strong> ${software['MonthlyExpenses']}</p>
+            <p><strong>Monthly Budget:</strong> ${software['Monthly Budget']}</p>
+            <p><strong>Contract Sign Date:</strong> ${software['Contract Sign Date']}</p>
+            <p><strong>Contract Expiration Date:</strong> ${software['Contract Expiration Date']}</p>
+        `;
+        listItem.appendChild(details);
+        softwareDataContainer.appendChild(listItem);
+    });
+
+    // Display vendor data
+    data.vendorData.forEach(vendor => {
+        const listItem = document.createElement('li');
+        listItem.textContent = vendor['Vendor Category'];
+        listItem.addEventListener('click', function() {
+            const details = this.querySelector('.knowledge-vendor-details');
+            if (details.style.display === 'none' || details.style.display === '') {
+                details.style.display = 'block';
+            } else {
+                details.style.display = 'none';
+            }
+            toggleActiveItem(listItem);
+        });
+
+        const details = document.createElement('div');
+        details.className = 'knowledge-vendor-details';
+        details.innerHTML = `
+            <p><strong>Company:</strong> ${vendor['Company']}</p>
+            <p><strong>Contact:</strong> ${vendor['Contact Name']}</p>
+            <p><strong>Phone:</strong> ${vendor['Phone']}</p>
+            <p><strong>Email:</strong> ${vendor['Email']}</p>
+            <p><strong>Website:</strong> <a href="${vendor['Website']}" target="_blank">${vendor['Website']}</a></p>
+            <p><strong>Office Address:</strong> ${vendor['OfficeAddress']}</p>
+            <p><strong>Monthly Expenses:</strong> ${vendor['Monthly Expenses']}</p>
+            <p><strong>Monthly Budget:</strong> ${vendor['Monthly Budget']}</p>
+            <p><strong>COI Policy Number:</strong> ${vendor['COI Policy Number']}</p>
+            <p><strong>COI Policy Expiration Date:</strong> ${vendor['COI Policy Expiration Date']}</p>
+            <p><strong>Contract Sign Date:</strong> ${vendor['Contract Sign Date']}</p>
+            <p><strong>Contract Expiration Date:</strong> ${vendor['Contract Expiration Date']}</p>
+        `;
+        listItem.appendChild(details);
+        vendorDataContainer.appendChild(listItem);
     });
 }
 
-function showTable(tableId) {
-    // Hide all tables
-    const tables = document.querySelectorAll('.knowledge-table');
-    tables.forEach(table => {
-        table.style.display = 'none';
-        
-        // Check if table is empty and add placeholder if needed
-        const tbody = table.querySelector('tbody');
-        if (!tbody.hasChildNodes() || (tbody.children.length === 1 && tbody.children[0].classList.contains('placeholder-row'))) {
-            tbody.innerHTML = `
-                <tr class="placeholder-row">
-                    <td colspan="${table.querySelectorAll('thead th').length}">Wow! So Empty!</td>
-                </tr>`;
-        }
+function setActiveItem(selectedItem, selector) {
+    const listItems = document.querySelectorAll(selector);
+    listItems.forEach(item => {
+        item.classList.remove('active');
     });
-    
-    // Show selected table
-    const selectedTable = document.getElementById(tableId);
-    if (selectedTable) {
-        selectedTable.style.display = 'table';
+    selectedItem.classList.add('active');
+}
+
+function toggleActiveItem(item) {
+    item.classList.toggle('active');
+}
+
+// Modal functionality
+
+// Get the modal
+var modal = document.getElementById("photosModal");
+
+// Get the buttons that open the modal
+var photosBtn = document.getElementById("photosButton");
+var mapBtn = document.getElementById("mapButton");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// Get the photos container
+var photosContainer = document.getElementById("photosContainer");
+
+// Function to load photos
+function loadPhotos(facilityName) {
+    // Clear previous photos
+    photosContainer.innerHTML = '';
+
+    // Path to the facility photos folder
+    var folderPath = `knowledgejson/knowledgefacilityphotos/${facilityName}`;
+
+    // Fetch the list of photos (assuming you have an endpoint or a way to get the list of photos)
+    fetch(`${folderPath}/photos.json`)
+        .then(response => response.json())
+        .then(photos => {
+            photos.forEach(photo => {
+                var imgContainer = document.createElement('div');
+                imgContainer.style.position = 'relative';
+                imgContainer.style.display = 'inline-block';
+                imgContainer.style.margin = '10px';
+
+                var img = document.createElement('img');
+                img.src = `${folderPath}/${photo}`;
+                img.style.width = '250px'; // Adjust size as needed
+                img.style.height = '250px'; // Adjust size as needed
+                img.style.padding = '10px'; // Adjust padding as needed
+                img.style.maxWidth = '100%'; // Ensure it doesn't overflow the modal
+                img.style.maxHeight = '100%'; // Ensure it doesn't overflow the modal
+
+                var caption = document.createElement('div');
+                caption.innerText = photo.replace('.jpg', '');
+                caption.style.textAlign = 'center';
+                caption.style.marginTop = '5px';
+
+                imgContainer.appendChild(img);
+                imgContainer.appendChild(caption);
+                photosContainer.appendChild(imgContainer);
+
+                // Open larger view of image on click
+                img.onclick = function() {
+                    var largeImgContainer = document.createElement('div');
+                    largeImgContainer.style.position = 'fixed';
+                    largeImgContainer.style.top = '50%';
+                    largeImgContainer.style.left = '50%';
+                    largeImgContainer.style.transform = 'translate(-50%, -50%)';
+                    largeImgContainer.style.zIndex = '1000';
+                    largeImgContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+                    largeImgContainer.style.padding = '0px';
+                    largeImgContainer.style.borderRadius = '10px';
+
+                    var largeImg = document.createElement('img');
+                    largeImg.src = img.src;
+                    largeImg.style.maxWidth = '90vw';
+                    largeImg.style.maxHeight = '90vh';
+
+                    var closeBtn = document.createElement('span');
+                    closeBtn.innerText = '×';
+                    closeBtn.style.position = 'absolute';
+                    closeBtn.style.top = '10px';
+                    closeBtn.style.right = '20px';
+                    closeBtn.style.fontSize = '30px';
+                    closeBtn.style.color = 'white';
+                    closeBtn.style.cursor = 'pointer';
+
+                    closeBtn.onclick = function() {
+                        document.body.removeChild(largeImgContainer);
+                    };
+
+                    document.body.appendChild(largeImgContainer);
+
+                    setTimeout(() => {
+                        document.addEventListener('click', function(event) {
+                            if (!largeImgContainer.contains(event.target)) {
+                                document.body.removeChild(largeImgContainer);
+                            }
+                        });
+                    }, 0);
+
+                    largeImgContainer.appendChild(largeImg);
+                    largeImgContainer.appendChild(closeBtn);
+                    document.body.appendChild(largeImgContainer);
+
+                
+                };
+            });
+        })
+        .catch(error => console.error('Error loading photos:', error));
+}
+
+// Function to load map images
+function loadMapImages(facilityName) {
+    // Clear previous photos
+    photosContainer.innerHTML = '';
+
+    // Path to the facility photos folder
+    var folderPath = `knowledgejson/knowledgefacilityphotos/${facilityName}`;
+
+    // Fetch the list of photos (assuming you have an endpoint or a way to get the list of photos)
+    fetch(`${folderPath}/mapphotos.json`)
+        .then(response => response.json())
+        .then(photos => {
+            var mapPhotos = photos.filter(photo => photo.includes('map'));
+            mapPhotos.forEach(photo => {
+                var imgContainer = document.createElement('div');
+                imgContainer.style.position = 'relative';
+                imgContainer.style.display = 'inline-block';
+                imgContainer.style.margin = '10px';
+                imgContainer.style.width = 'calc(33.33% - 20px)'; // 3x3 grid
+                imgContainer.style.boxSizing = 'border-box';
+
+                var img = document.createElement('img');
+                img.src = `${folderPath}/${photo}`;
+                img.style.width = '100%'; // Adjust size as needed
+                img.style.height = 'auto'; // Adjust size as needed
+                img.style.padding = '10px'; // Adjust padding as needed
+                img.style.transition = 'transform 0.2s'; // Smooth transition for enlargement
+                img.style.maxWidth = '100%'; // Ensure it doesn't overflow the modal
+                img.style.maxHeight = '100%'; // Ensure it doesn't overflow the modal
+
+                var caption = document.createElement('div');
+                caption.innerText = photo.replace('.jpg', '');
+                caption.style.textAlign = 'center';
+                caption.style.marginTop = '5px';
+
+                imgContainer.appendChild(img);
+                imgContainer.appendChild(caption);
+                photosContainer.appendChild(imgContainer);
+
+                // Open larger view of image on click
+                img.onclick = function() {
+                    var largeImgContainer = document.createElement('div');
+                    largeImgContainer.style.position = 'fixed';
+                    largeImgContainer.style.top = '50%';
+                    largeImgContainer.style.left = '50%';
+                    largeImgContainer.style.transform = 'translate(-50%, -50%)';
+                    largeImgContainer.style.zIndex = '1000';
+                    largeImgContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+                    largeImgContainer.style.padding = '0px';
+                    largeImgContainer.style.borderRadius = '10px';
+
+                    var largeImg = document.createElement('img');
+                    largeImg.src = img.src;
+                    largeImg.style.maxWidth = '90vw';
+                    largeImg.style.maxHeight = '90vh';
+
+                    var closeBtn = document.createElement('span');
+                    closeBtn.innerText = '×';
+                    closeBtn.style.position = 'absolute';
+                    closeBtn.style.top = '10px';
+                    closeBtn.style.right = '20px';
+                    closeBtn.style.fontSize = '30px';
+                    closeBtn.style.color = 'white';
+                    closeBtn.style.cursor = 'pointer';
+
+                    closeBtn.onclick = function() {
+                        document.body.removeChild(largeImgContainer);
+                    };
+
+                    document.body.appendChild(largeImgContainer);
+
+                    setTimeout(() => {
+                        document.addEventListener('click', function(event) {
+                            if (!largeImgContainer.contains(event.target)) {
+                                document.body.removeChild(largeImgContainer);
+                            }
+                        });
+                    }, 0);
+
+                    largeImgContainer.appendChild(largeImg);
+                    largeImgContainer.appendChild(closeBtn);
+                    document.body.appendChild(largeImgContainer);
+
+                
+                };
+            });
+        })
+        .catch(error => console.error('Error loading photos:', error));
+}
+
+// When the user clicks the Photos button, open the modal and load photos
+photosBtn.onclick = function() {
+    var selectedFacility = document.querySelector('.knowledge-facility-list-container li.active').textContent;
+    loadPhotos(selectedFacility);
+    modal.style.display = "block";
+}
+
+// When the user clicks the Map button, open the modal and load map images
+mapBtn.onclick = function() {
+    var selectedFacility = document.querySelector('.knowledge-facility-list-container li.active').textContent;
+    loadMapImages(selectedFacility);
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
     }
-}
-
-function selectTabButton(tableId) {
-    // Update active state of tab buttons
-    const buttons = document.querySelectorAll('.tab-button');
-    buttons.forEach(button => {
-        if (button.getAttribute('onclick').includes(tableId)) {
-            button.classList.add('active');
-        } else {
-            button.classList.remove('active');
-        }
-    });
-}
-
-function handleFormSubmit() {
-    const category = document.getElementById('category').value;
-    const formInputs = document.getElementById('form-fields').getElementsByClassName('form-input');
-    const tableBody = document.querySelector(`#${category}-table tbody`);
-    
-    // Remove placeholder row if exists
-    const placeholderRow = tableBody.querySelector('.placeholder-row');
-    if (placeholderRow) {
-        tableBody.removeChild(placeholderRow);
-    }
-    
-    // Create new row
-    const newRow = document.createElement('tr');
-    Array.from(formInputs).forEach(input => {
-        const cell = document.createElement('td');
-        const inputClone = document.createElement('input');
-        inputClone.type = 'text';
-        inputClone.value = input.value;
-        inputClone.className = 'table-input';
-        if (input.classList.contains('notes-field')) {
-            inputClone.classList.add('notes-field');
-        }
-        cell.appendChild(inputClone);
-        newRow.appendChild(cell);
-    });
-    
-    // Add row to table
-    tableBody.appendChild(newRow);
-    
-    // Reset form
-    document.getElementById('knowledge-form').reset();
-    document.getElementById('form-fields').innerHTML = '';
-    console.log('Form submitted and table updated'); // Debug log
-
-    // Activate the tab button for the selected category
-    selectTabButton(`${category}-table`);
-    showTable(`${category}-table`);
-
-    // Reset the selector to the default value
-    document.getElementById('category').value = '';
-    document.getElementById('knowledge-form').style.display = 'none';
 }

@@ -1,0 +1,26 @@
+[
+    {   "id": 0, 
+        "name": "All Facilities", 
+        "status": "" },
+
+    {
+        "id": 1,
+        "name": "Paladin Self-Storage",
+        "status": ""
+    },
+    {
+        "id": 2,
+        "name": "Paladin Self-Storage 2",
+        "status": ""
+    },
+    {
+        "id": 3,
+        "name": "Paladin Self-Storage 3",
+        "status": ""
+    },
+    {
+        "id": 4,
+        "name": "Miller's Self-Storage",
+        "status": ""
+    }
+]

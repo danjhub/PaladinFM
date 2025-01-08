@@ -1,0 +1,192 @@
+{
+  "performanceData": {
+    "revenue": {
+      "mtdKpiData": [
+        { "title": "Revenue MTD", "data": "$3,456", "format": "currency" },
+        { "title": "Revenue YTD", "data": "$18,234", "format": "currency" },
+        { "title": "Rent per sqft", "data": "$1.23", "format": "currency" },
+        { "title": "MTD Discounts/Fees/Credits", "data": "$1,234", "format": "currency" }
+      ],
+      "kpiGraphs": [
+        {
+          "title": "YTD Revenue Performance",
+          "data": [
+            { "month": "January", "revenue": "$1,234", "format": "currency" },
+            { "month": "February", "revenue": "$1,567", "format": "currency" },
+            { "month": "March", "revenue": "$1,890", "format": "currency" },
+            { "month": "April", "revenue": "$2,123", "format": "currency" },
+            { "month": "May", "revenue": "$2,456", "format": "currency" },
+            { "month": "June", "revenue": "$2,789", "format": "currency" },
+            { "month": "July", "revenue": "$3,012", "format": "currency" },
+            { "month": "August", "revenue": "$3,345", "format": "currency" },
+            { "month": "September", "revenue": "$3,678", "format": "currency" },
+            { "month": "October", "revenue": "$4,001", "format": "currency" },
+            { "month": "November", "revenue": "$4,234", "format": "currency" },
+            { "month": "December", "revenue": "$4,567", "format": "currency" },
+            { "month": "January", "revenue": "$4,890", "format": "currency" }
+          ]
+        },
+        {
+          "title": "Revenue & Receipts Performance",
+          "data": [
+            { "month": "January", "revenue": "$4,890", "receipts": "$4,567", "format": "currency" },
+            { "month": "February", "revenue": "$5,123", "receipts": "$4,890", "format": "currency" },
+            { "month": "March", "revenue": "$5,456", "receipts": "$5,123", "format": "currency" },
+            { "month": "April", "revenue": "$5,789", "receipts": "$5,456", "format": "currency" },
+            { "month": "May", "revenue": "$6,012", "receipts": "$5,789", "format": "currency" },
+            { "month": "June", "revenue": "$6,345", "receipts": "$6,012", "format": "currency" },
+            { "month": "July", "revenue": "$6,678", "receipts": "$6,345", "format": "currency" },
+            { "month": "August", "revenue": "$7,001", "receipts": "$6,678", "format": "currency" },
+            { "month": "September", "revenue": "$7,234", "receipts": "$7,001", "format": "currency" },
+            { "month": "October", "revenue": "$7,567", "receipts": "$7,234", "format": "currency" },
+            { "month": "November", "revenue": "$7,890", "receipts": "$7,567", "format": "currency" },
+            { "month": "December", "revenue": "$8,123", "receipts": "$7,890", "format": "currency" },
+            { "month": "January", "revenue": "$8,456", "receipts": "$8,123", "format": "currency" }
+          ]
+        },
+        {
+          "title": "Gross Potential History",
+          "data": [
+            { "month": "January", "grossPotential": "$5,678", "format": "currency" },
+            { "month": "February", "grossPotential": "$5,789", "format": "currency" },
+            { "month": "March", "grossPotential": "$5,890", "format": "currency" },
+            { "month": "April", "grossPotential": "$6,001", "format": "currency" },
+            { "month": "May", "grossPotential": "$6,123", "format": "currency" },
+            { "month": "June", "grossPotential": "$6,234", "format": "currency" },
+            { "month": "July", "grossPotential": "$6,345", "format": "currency" },
+            { "month": "August", "grossPotential": "$6,456", "format": "currency" },
+            { "month": "September", "grossPotential": "$6,567", "format": "currency" },
+            { "month": "October", "grossPotential": "$6,678", "format": "currency" },
+            { "month": "November", "grossPotential": "$6,789", "format": "currency" },
+            { "month": "December", "grossPotential": "$6,890", "format": "currency" },
+            { "month": "January", "grossPotential": "$7,001", "format": "currency" }
+          ]
+        }
+      ]
+    },
+    "occupancy": {
+      "mtdOccData": [
+        { "title": "Current OCC", "data": "75%", "format": "percentage" },
+        { "title": "Current Sqft OCC", "data": "75%", "format": "percentage" },
+        { "title": "Average OCC", "data": "85%", "format": "percentage" },
+        { "title": "Average Sqft OCC", "data": "86%", "format": "percentage" },
+        { "title": "Total Units", "data": "500", "format": "number" },
+        { "title": "Total Sqft", "data": "36,000", "format": "number" }
+      ],
+      "occGraphs": [
+        {
+          "title": "OCC Performance",
+          "data": [
+            { "month": "January 24", "occPercentage": "93%", "sqftOccPercentage": "92%", "format": "percentage" },
+            { "month": "February 24", "occPercentage": "92%", "sqftOccPercentage": "91%", "format": "percentage" },
+            { "month": "March 24", "occPercentage": "91%", "sqftOccPercentage": "90%", "format": "percentage" },
+            { "month": "April 24", "occPercentage": "90%", "sqftOccPercentage": "89%", "format": "percentage" },
+            { "month": "May 24", "occPercentage": "89%", "sqftOccPercentage": "88%", "format": "percentage" },
+            { "month": "June 24", "occPercentage": "88%", "sqftOccPercentage": "87%", "format": "percentage" },
+            { "month": "July 24", "occPercentage": "87%", "sqftOccPercentage": "86%", "format": "percentage" },
+            { "month": "August 24", "occPercentage": "86%", "sqftOccPercentage": "85%", "format": "percentage" },
+            { "month": "September 24", "occPercentage": "85%", "sqftOccPercentage": "84%", "format": "percentage" },
+            { "month": "October 24", "occPercentage": "84%", "sqftOccPercentage": "83%", "format": "percentage" },
+            { "month": "November 24", "occPercentage": "83%", "sqftOccPercentage": "82%", "format": "percentage" },
+            { "month": "December 24", "occPercentage": "82%", "sqftOccPercentage": "81%", "format": "percentage" },
+            { "month": "January 25", "occPercentage": "81%", "sqftOccPercentage": "80%", "format": "percentage" }
+          ]
+        }
+      ],
+      "mtdTrafficData": [
+        { "title": "Move Ins", "data": "22", "format": "number" },
+        { "title": "Rented Units", "data": "248", "format": "number" },
+        { "title": "Move Outs", "data": "7", "format": "number" },
+        { "title": "Vacant Units", "data": "12", "format": "number" },
+        { "title": "Net Moves", "data": "15", "format": "number" },
+        { "title": "Unavailable Units", "data": "2", "format": "number" }
+      ],
+      "trafficGraphs": [
+        {
+          "title": "YTD Traffic Performance",
+          "data": [
+            { "month": "January 24", "moveIns": 16, "moveOuts": 11, "netMoves": 5, "format": "number" },
+            { "month": "February 24", "moveIns": 18, "moveOuts": 13, "netMoves": 5, "format": "number" },
+            { "month": "March 24", "moveIns": 20, "moveOuts": 15, "netMoves": 5, "format": "number" },
+            { "month": "April 24", "moveIns": 22, "moveOuts": 17, "netMoves": 5, "format": "number" },
+            { "month": "May 24", "moveIns": 24, "moveOuts": 19, "netMoves": 5, "format": "number" },
+            { "month": "June 24", "moveIns": 26, "moveOuts": 21, "netMoves": 5, "format": "number" },
+            { "month": "July 24", "moveIns": 28, "moveOuts": 23, "netMoves": 5, "format": "number" },
+            { "month": "August 24", "moveIns": 30, "moveOuts": 25, "netMoves": 5, "format": "number" },
+            { "month": "September 24", "moveIns": 32, "moveOuts": 27, "netMoves": 5, "format": "number" },
+            { "month": "October 24", "moveIns": 34, "moveOuts": 29, "netMoves": 5, "format": "number" },
+            { "month": "November 24", "moveIns": 36, "moveOuts": 31, "netMoves": 5, "format": "number" },
+            { "month": "December 24", "moveIns": 38, "moveOuts": 33, "netMoves": 5, "format": "number" },
+            { "month": "January 25", "moveIns": 40, "moveOuts": 35, "netMoves": 5, "format": "number" }
+          ]
+        }
+      ]
+    },
+    "arplus": {
+      "mtdArData": [
+        { "title": "AR Percent", "data": "13%", "format": "percentage" },
+        { "title": "AP Enrolled Count", "data": "85", "format": "number" },
+        { "title": "AR Rent", "data": "$170.00", "format": "currency" },
+        { "title": "AP Enrolled Percent", "data": "89%", "format": "percentage" },
+        { "title": "AR Total", "data": "$220.00", "format": "currency" },
+        { "title": "Insurance Penetration", "data": "88%", "format": "percentage" }
+      ],
+      "arGraphs": [
+        {
+          "title": "Accounts Receivable History Graph",
+          "data": [
+            { "month": "January 24", "percentage": "11%", "format": "percentage" },
+            { "month": "February 24", "percentage": "12%", "format": "percentage" },
+            { "month": "March 24", "percentage": "13%", "format": "percentage" },
+            { "month": "April 24", "percentage": "14%", "format": "percentage" },
+            { "month": "May 24", "percentage": "15%", "format": "percentage" },
+            { "month": "June 24", "percentage": "16%", "format": "percentage" },
+            { "month": "July 24", "percentage": "17%", "format": "percentage" },
+            { "month": "August 24", "percentage": "18%", "format": "percentage" },
+            { "month": "September 24", "percentage": "19%", "format": "percentage" },
+            { "month": "October 24", "percentage": "20%", "format": "percentage" },
+            { "month": "November 24", "percentage": "21%", "format": "percentage" },
+            { "month": "December 24", "percentage": "22%", "format": "percentage" },
+            { "month": "January 25", "percentage": "23%", "format": "percentage" }
+          ]
+        },
+        {
+          "title": "Auto Pay Enrolled History Graph",
+          "data": [
+            { "month": "January 24", "percentage": "87%", "format": "percentage" },
+            { "month": "February 24", "percentage": "88%", "format": "percentage" },
+            { "month": "March 24", "percentage": "89%", "format": "percentage" },
+            { "month": "April 24", "percentage": "90%", "format": "percentage" },
+            { "month": "May 24", "percentage": "91%", "format": "percentage" },
+            { "month": "June 24", "percentage": "92%", "format": "percentage" },
+            { "month": "July 24", "percentage": "93%", "format": "percentage" },
+            { "month": "August 24", "percentage": "94%", "format": "percentage" },
+            { "month": "September 24", "percentage": "95%", "format": "percentage" },
+            { "month": "October 24", "percentage": "96%", "format": "percentage" },
+            { "month": "November 24", "percentage": "97%", "format": "percentage" },
+            { "month": "December 24", "percentage": "98%", "format": "percentage" },
+            { "month": "January 25", "percentage": "99%", "format": "percentage" }
+          ]
+        },
+        {
+          "title": "Insurance Penetration History Graph",
+          "data": [
+            { "month": "January 24", "percentage": "86%", "format": "percentage" },
+            { "month": "February 24", "percentage": "87%", "format": "percentage" },
+            { "month": "March 24", "percentage": "88%", "format": "percentage" },
+            { "month": "April 24", "percentage": "89%", "format": "percentage" },
+            { "month": "May 24", "percentage": "90%", "format": "percentage" },
+            { "month": "June 24", "percentage": "91%", "format": "percentage" },
+            { "month": "July 24", "percentage": "92%", "format": "percentage" },
+            { "month": "August 24", "percentage": "93%", "format": "percentage" },
+            { "month": "September 24", "percentage": "94%", "format": "percentage" },
+            { "month": "October 24", "percentage": "95%", "format": "percentage" },
+            { "month": "November 24", "percentage": "96%", "format": "percentage" },
+            { "month": "December 24", "percentage": "97%", "format": "percentage" },
+            { "month": "January 25", "percentage": "98%", "format": "percentage" }
+          ]
+        }
+      ]
+    }
+  }
+}
